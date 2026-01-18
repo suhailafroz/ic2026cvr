@@ -180,6 +180,23 @@
             padding: 14px 40px
         }
 
+        /* ================= SCROLL TOP ================= */
+        #topBtn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: none;
+            z-index: 999;
+            border: 1px solid grey;
+            border-radius: 50%;
+            transition: all .5s;
+        }
+
+        #topBtn:hover {
+            background-color: antiquewhite;
+            transform: scale(1.2);
+        }
+
         /* Footer */
         footer {
             background: var(--blue1);
@@ -223,10 +240,12 @@
         <div class="hero-content" data-aos="zoom-in">
             <h1 class="display-5 fw-bold">International Conference on Advanced Computing</h1>
             <h3 class="mt-2 cvr-font">CVR College of Engineering</h3>
+            <h4 class="mt-2 cvr-font text-warning" style="font-size: 1.2rem; text-align: right;">(In Pursuit of
+                Excellence)</h4>
             <p class="mt-3">Artificial Intelligence • Machine Learning • Multi‑Disciplinary Research</p>
             <div id="countdown" class="mt-4"></div>
             <a href="https://easychair.org/conferences/?conf=ic2026" target="_blank"
-                class="btn btn-warning btn-lg mt-4">Paper Submission (EasyChair)</a>
+                class="btn btn-outline-warning btn-lg mt-4">Paper Submission (EasyChair)</a>
         </div>
     </section>
 
@@ -253,7 +272,81 @@
             </div>
         </div>
     </section>
+    <!-- Indexing -->
 
+    <section class="jumbotron new-slider-section  text-white" style="background-color: rgba(48, 89, 163, 0.462);">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h3> Indexing <sup>**</sup></h3>
+                </div><!--col-sm-4-->
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                                Indexed by SCOPUS, EI Compendex, INSPEC, WTI Frankfurt eG, zbMATH, SCImago. All books
+                                published in the series are submitted for consideration in the Web of Science.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card mt-2 text-center">
+                            <div class="img">
+                                <img class="img-fluid" src="assets/images/indexing pics/SCOPUS.png">
+                            </div><!--img-->
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card mt-2 text-center">
+                            <div class="img">
+                                <img class="img-fluid" src="assets/images/indexing pics/INSPEC.png">
+                            </div><!--img-->
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card mt-2 text-center">
+                            <div class="img">
+                                <img class="img-fluid" src="assets/images/indexing pics/WTI-Frankfurt-eG.png">
+                            </div><!--img-->
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card mt-2 text-center">
+                            <div class="img">
+                                <img class="img-fluid" src="assets/images/indexing pics/EI-Compendex.png">
+                            </div><!--img-->
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card  mt-2 text-center">
+                            <div class="img">
+                                <img class="img-fluid" src="assets/images/indexing pics/SCImago.png">
+                            </div><!--img-->
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card mt-2 text-center">
+                            <div class="img">
+                                <img class="img-fluid" src="assets/images/indexing pics/index_engineeringvillage.png">
+                            </div><!--img-->
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card mt-2 text-center">
+                            <div class="img">
+                                <img class="img-fluid" src="assets/images/indexing pics/index_google_scholar.png">
+                            </div><!--img-->
+                        </div>
+                    </div>
+
+                </div><!--row-->
+            </div><!--col-sm-8-->
+        </div><!--row-->
+        </div><!--container-->
+    </section><!--new-slider-section-->
     <!-- GLOBAL -->
     <section id="publications" class="bg-white">
         <div class="container">
@@ -415,7 +508,7 @@
             <p>© 2026 CVR College of Engineering | Designed by Conference Web Team</p>
         </div>
     </footer>
-
+    <button id="topBtn" class="btn btn-register">↑</button>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>AOS.init({ once: true, duration: 1000 });</script>
@@ -456,6 +549,13 @@
             var rzp = new Razorpay(options);
             rzp.open();
         }
+
+        // Go To Top Button
+        const btn = document.getElementById("topBtn");
+        window.addEventListener("scroll", () => {
+            btn.style.display = window.scrollY > 300 ? "block" : "none";
+        });
+        btn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
         /* Background Animation */
         const c = document.getElementById('bg'), x = c.getContext('2d');
