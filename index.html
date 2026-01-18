@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>International Conference | CVR College of Engineering</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Razorpay -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <style>
+        :root {
+            --blue1: #0b3c6d;
+            --blue2: #1e88e5;
+            --blue3: #64b5f6;
+            --light: #f4f9ff;
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        .cvr-font {
+            font-family: 'CG Omega', 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: rgb(141, 228, 141);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: #0b2545
+        }
+
+        /* NAV */
+        .navbar {
+            background: linear-gradient(90deg, var(--blue1), var(--blue2))
+        }
+
+        .nav-link,
+        .navbar-brand {
+            color: #fff !important;
+            font-weight: 500
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            background: radial-gradient(circle at top, var(--blue2), var(--blue1));
+            overflow: hidden
+        }
+
+        .hero canvas {
+            position: absolute;
+            inset: 0;
+            z-index: 0
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px
+        }
+
+        section {
+            padding: 90px 0
+        }
+
+        .section-title {
+            text-align: center;
+            font-weight: 700;
+            color: var(--blue1);
+            margin-bottom: 50px
+        }
+
+        /* Cards */
+        .card {
+            border: none;
+            border-radius: 18px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .1);
+            transition: .3s
+        }
+
+        .card:hover {
+            transform: translateY(-8px)
+        }
+
+        /* Flags */
+        .flag {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+        }
+
+        .flag img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .flag span {
+            position: absolute;
+            inset: 0;
+            background: rgba(11, 60, 109, .85);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: .9rem;
+            opacity: 0;
+            transition: .3s
+        }
+
+        .flag:hover span {
+            opacity: 1
+        }
+
+        .flag span {
+            position: absolute;
+            inset: 0;
+            background: #0b3c6dcc;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .9rem;
+            opacity: 0;
+            transition: .3s
+        }
+
+        .flag:hover span {
+            opacity: 1
+        }
+
+        /* Timeline */
+        .timeline {
+            border-left: 4px solid var(--blue2);
+            padding-left: 25px
+        }
+
+        .timeline-item {
+            margin-bottom: 30px
+        }
+
+        /* Table */
+        .table thead {
+            background: var(--blue2);
+            color: #fff
+        }
+
+        /* Buttons */
+        .btn-main {
+            background: linear-gradient(135deg, var(--blue2), var(--blue3));
+            border: none;
+            color: #fff;
+            font-weight: 600;
+            border-radius: 30px;
+            padding: 14px 40px
+        }
+
+        /* Footer */
+        footer {
+            background: var(--blue1);
+            color: #fff;
+            padding: 50px 0
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home"><img src="assets/images/CVR Logo.png" height="40"
+                    class="me-2">IC‑2026</a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#cfp">CFP</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="https://easychair.org/conferences/?conf=ic2026"
+                            target="_blank">EasyChair</a></li> -->
+                    <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#committee">Committee</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#agenda">Agenda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#keynotes">Keynotes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#register">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#venue">Venue</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <canvas id="bg"></canvas>
+        <div class="hero-content" data-aos="zoom-in">
+            <h1 class="display-5 fw-bold">International Conference on Advanced Computing</h1>
+            <h3 class="mt-2 cvr-font">CVR College of Engineering</h3>
+            <p class="mt-3">Artificial Intelligence • Machine Learning • Multi‑Disciplinary Research</p>
+            <div id="countdown" class="mt-4"></div>
+            <a href="https://easychair.org/conferences/?conf=ic2026" target="_blank"
+                class="btn btn-warning btn-lg mt-4">Paper Submission (EasyChair)</a>
+        </div>
+    </section>
+
+    <!-- COUNTERS -->
+    <section>
+        <div class="container">
+            <div class="row text-center" data-aos="fade-up">
+                <div class="col-md-3">
+                    <h2>25+</h2>
+                    <p>Countries</p>
+                </div>
+                <div class="col-md-3">
+                    <h2>200+</h2>
+                    <p>Institutions</p>
+                </div>
+                <div class="col-md-3">
+                    <h2>1500+</h2>
+                    <p>Papers</p>
+                </div>
+                <div class="col-md-3">
+                    <h2>5000+</h2>
+                    <p>Delegates</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GLOBAL -->
+    <section id="publications" class="bg-white">
+        <div class="container">
+            <h2 class="section-title">Global Participation</h2>
+            <div class="d-flex justify-content-center flex-wrap gap-4" data-aos="zoom-in">
+                <div class="flag"><img src="https://flagcdn.com/w160/in.png" class="img-fluid"><span>India</span></div>
+                <div class="flag"><img src="https://flagcdn.com/w160/us.png" class="img-fluid"><span>USA</span></div>
+                <div class="flag"><img src="https://flagcdn.com/w160/gb.png" class="img-fluid"><span>UK</span></div>
+                <div class="flag"><img src="https://flagcdn.com/w160/de.png" class="img-fluid"><span>Germany</span>
+                </div>
+                <div class="flag"><img src="https://flagcdn.com/w160/jp.png" class="img-fluid"><span>Japan</span></div>
+                <div class="flag"><img src="https://flagcdn.com/w160/au.png" class="img-fluid"><span>Australia</span>
+                </div>
+                <div class="flag"><img src="https://flagcdn.com/w160/ca.png" class="img-fluid"><span>Canada</span></div>
+                <div class="flag"><img src="https://flagcdn.com/w160/cn.png" class="img-fluid"><span>China</span></div>
+                <div class="flag"><img src="https://flagcdn.com/w160/nl.png" class="img-fluid"><span>Netherlands</span>
+                </div>
+                <div class="flag"><img src="https://flagcdn.com/w160/qa.png" class="img-fluid"><span>Qatar</span></div>
+                <div class="flag"><img src="https://flagcdn.com/w160/ru.png" class="img-fluid"><span>Russia</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CFP -->
+    <section id="cfp">
+        <div class="container text-center" data-aos="fade-up">
+            <h2 class="section-title">Call for Papers</h2>
+            <p>AI, ML, Image Processing, Cloud Computing, IoT & Multi‑Disciplinary Tracks</p>
+            <a href="cfp.pdf" class="btn btn-outline-primary mt-2">Download CFP</a>
+            <a href="https://easychair.org/conferences/?conf=ic2026" target="_blank"
+                class="btn btn-outline-primary mt-2">EasyChair - Submission</a>
+        </div>
+    </section>
+
+    <!-- IMPORTANT DATES -->
+    <section class="bg-white" id="agenda">
+        <div class="container">
+            <h2 class="section-title">Agenda & Important Dates</h2>
+            <div class="timeline" data-aos="fade-up">
+                <div class="timeline-item"><strong>15 Jan 2026</strong> – Paper Submission Deadline</div>
+                <div class="timeline-item"><strong>15 Feb 2026</strong> – Acceptance Notification</div>
+                <div class="timeline-item"><strong>01 Mar 2026</strong> – Camera Ready Submission</div>
+                <div class="timeline-item"><strong>15 Mar 2026</strong> – Inauguration & Keynotes</div>
+                <div class="timeline-item"><strong>16 Mar 2026</strong> – Technical Sessions</div>
+                <div class="timeline-item"><strong>17 Mar 2026</strong> – Workshops & Valedictory</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMITTEE -->
+    <section id="committee">
+        <div class="container">
+            <h2 class="section-title">Committee</h2>
+            <div class="row g-4" data-aos="fade-up">
+                <div class="col-md-4">
+                    <div class="card p-4 text-center">Chief Patron</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 text-center">Conference Chair</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 text-center">Technical Committee</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEYNOTES -->
+    <section id="keynotes" class="bg-white">
+        <div class="container">
+            <h2 class="section-title">Keynote Speakers</h2>
+            <div class="row g-4" data-aos="zoom-in">
+                <div class="col-md-3">
+                    <div class="card p-3 text-center">Dr. M. Raghava<br><small>India</small></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3 text-center">Dr. Kim J<br><small>Korea</small></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3 text-center">Dr. D. Teja<br><small>Honkong</small></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3 text-center">Dr. Ram Ch<br><small>India</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTRATION -->
+    <section id="register">
+        <div class="container text-center">
+            <h2 class="section-title">Registration Fee</h2>
+            <table class="table table-bordered w-75 mx-auto">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Fee</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Student</td>
+                        <td>₹4000</td>
+                    </tr>
+                    <tr>
+                        <td>Academic</td>
+                        <td>₹6000</td>
+                    </tr>
+                    <tr>
+                        <td>Industry</td>
+                        <td>₹8000</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn-main mt-4" onclick="payNow()">Pay with Razorpay</button>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="bg-white">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <div class="row g-3" data-aos="fade-up">
+                <div class="col-md-3">
+                    <div class="card p-5"><img src="assets/images/pics/315 A FB.JPG" alt="" srcset=""></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-5"><img src="assets/images/pics/newcsedept.jpg" alt="" srcset=""></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-5"><img src="assets/images/pics/newcsedept1.jpg" alt="" srcset=""></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-5"><img src="assets/images/pics/newcsedept2.jpg" alt="" srcset=""></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VENUE -->
+    <section id="venue">
+        <div class="container text-center">
+            <h2 class="section-title">Venue</h2>
+            <iframe src="https://www.google.com/maps?q=CVR+College+of+Engineering&output=embed" width="100%"
+                height="350" style="border:0;border-radius:16px"></iframe>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container text-center">
+            <h2 class="section-title">Contact</h2>
+            <p>Email: conference@cvr.ac.in</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <p>© 2026 CVR College of Engineering | Designed by Conference Web Team</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>AOS.init({ once: true, duration: 1000 });</script>
+
+    <script>
+        /* Countdown */
+        const target = new Date('2026-03-15T09:00:00').getTime();
+        setInterval(() => {
+            const d = target - new Date().getTime();
+            const m = Math.floor(d / (1000 * 60 * 60 * 24 * 30));
+            const da = Math.floor((d % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            const h = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mi = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((d % (1000 * 60)) / 1000);
+            document.getElementById('countdown').innerHTML =
+                `<span class='badge bg-light text-dark m-1'>${m}M</span>
+  <span class='badge bg-light text-dark m-1'>${da}D</span>
+  <span class='badge bg-light text-dark m-1'>${h}H</span>
+  <span class='badge bg-light text-dark m-1'>${mi}M</span>
+  <span class='badge bg-light text-dark m-1'>${s}S</span>`;
+        }, 1000);
+
+        /* Razorpay Demo */
+        function payNow() {
+            var options = {
+                key: 'rzp_test_1234567890',
+                amount: 400000,
+                currency: 'INR',
+                name: 'International Conference – CVR College of Engineering',
+                description: 'Conference Registration Fee',
+                image: 'http://cvr.ac.in/images/logo.png',
+                handler: function (response) {
+                    alert('Payment Successful! Payment ID: ' + response.razorpay_payment_id);
+                },
+                modal: { ondismiss: function () { console.log('Checkout closed') } },
+                theme: { color: '#1e88e5' }
+            };
+            var rzp = new Razorpay(options);
+            rzp.open();
+        }
+
+        /* Background Animation */
+        const c = document.getElementById('bg'), x = c.getContext('2d');
+        function r() { c.width = innerWidth; c.height = innerHeight } r(); onresize = r;
+        let p = [...Array(70)].map(() => ({ x: Math.random() * c.width, y: Math.random() * c.height, vx: Math.random() - .5, vy: Math.random() - .5 }));
+        (function a() { x.clearRect(0, 0, c.width, c.height); p.forEach(d => { d.x += d.vx; d.y += d.vy; if (d.x < 0 || d.x > c.width) d.vx *= -1; if (d.y < 0 || d.y > c.height) d.vy *= -1; x.fillStyle = '#ffffff66'; x.fillRect(d.x, d.y, 2, 2); p.forEach(e => { if (Math.hypot(d.x - e.x, d.y - e.y) < 120) { x.strokeStyle = '#ffffff22'; x.beginPath(); x.moveTo(d.x, d.y); x.lineTo(e.x, e.y); x.stroke(); } }) }); requestAnimationFrame(a) })();
+    </script>
+</body>
+
+</html>
